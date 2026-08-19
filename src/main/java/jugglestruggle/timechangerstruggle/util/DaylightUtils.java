@@ -79,7 +79,7 @@ public final class DaylightUtils
 		if (addDay)
 			days += 1L;
 		
-		cal.set(0, Calendar.JANUARY, (int)days, hours, minutes, seconds);
+		cal.set(3006, Calendar.JANUARY, (int)days, hours, minutes, seconds);
 		
 		return cal.getTime();
 	}

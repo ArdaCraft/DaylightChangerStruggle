@@ -5,10 +5,10 @@
 	"environment": "client",
 	
 	"name": "DaylightChangerStruggle",
-	"description": "Allows you to change the client's world time in a variety of ways!",
+	"description": "Allows you to change the client's world time in a variety of ways! Forked and adapted for Ardacraft.",
 	"icon": "assets/timechangerstruggle/icon.png",
 	"authors": ["JuggleStruggle"],
-    "contributors": [],
+    "contributors": ["AjCool", "Acen"],
 	
 	"license": "LGPL-3.0-only",
 
@@ -28,15 +28,14 @@
 	"accessWidener": "timechangerstruggle.client.accesswidener",
 
 	"contact": {
-		"homepage": "https://github.com/JuggleStruggle/DaylightChangerStruggle",
-		"sources": "https://github.com/JuggleStruggle/DaylightChangerStruggle",
-		"issues": "https://github.com/JuggleStruggle/DaylightChangerStruggle/issues"
+		"homepage": "https://github.com/ArdaCraft/DaylightChangerStruggle",
+		"sources": "https://github.com/ArdaCraft/DaylightChangerStruggle",
+		"issues": "https://github.com/ArdaCraft/DaylightChangerStruggle"
 	},
 
 	"custom": {
 		"modmenu": {
 			"links": {
-				"modmenu.github_releases": "https://github.com/JuggleStruggle/DaylightChangerStruggle/releases",
 				"modmenu.modrinth": "https://modrinth.com/mod/daylightchangerstruggle",
 				"modmenu.curseforge": "https://curseforge.com/minecraft/mc-mods/daylightchangerstruggle"
 			}

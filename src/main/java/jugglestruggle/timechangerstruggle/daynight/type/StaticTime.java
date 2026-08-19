@@ -243,8 +243,8 @@ public class StaticTime implements DayNightCycleBasis
 		{
 			return switch (this)
 			{
-				case NOON -> Text.of("\u2600");
-				case MIDNIGHT -> Text.of("\u263D");
+				case NOON -> Text.of("\uD83C\uDF11");
+				case MIDNIGHT -> Text.of("\uD83C\uDF19");
 				case SUNRISE -> Text.of("\u25D3");
 				case SUNSET -> Text.of("\u25D2");
 				

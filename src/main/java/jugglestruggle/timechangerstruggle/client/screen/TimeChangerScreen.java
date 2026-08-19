@@ -673,7 +673,7 @@ public class TimeChangerScreen extends Screen
 			int x = this.width / 2;
 			int y = this.height - 86;
 			
-			ctx.fillGradient(x - 152, y, x + 152, y + this.textRenderer.fontHeight + 4, 0xAA000000, 0x77000000);
+			ctx.fillGradient(x - 152, y, x + 152, y + this.textRenderer.fontHeight + 4, 0x77000000, 0x77000000);
 			ctx.drawText(this.textRenderer, parsedTime, x - (textWidth / 2), y + 3, -1, false);
 		}
 			
@@ -708,12 +708,7 @@ public class TimeChangerScreen extends Screen
 			}
 		}
 	}
-	@Override // 1.21.5 port change: avoid rendering the background unless the player's not in a world
-	public void renderBackground(DrawContext context, int mouseX, int mouseY, float deltaTicks) 
-	{
-		if (this.client.world == null)
-			super.renderBackground(context, mouseX, mouseY, deltaTicks);
-	}
+
 	
 	@Override
 	public void tick()
@@ -2164,7 +2159,7 @@ public class TimeChangerScreen extends Screen
 		protected void drawMenuListBackground(DrawContext ctx) 
 		{
 			if (this.getMaxScrollY() <= 0)
-				ctx.fillGradient(this.getX(), this.getY(), this.getRight(), this.getBottom(), 0xAA334400, 0x55002233);
+				ctx.fillGradient(this.getX(), this.getY(), this.getRight(), this.getBottom(), 0x44000000, 0x44000000);
 		}
 
 		@Override
@@ -2176,7 +2171,7 @@ public class TimeChangerScreen extends Screen
 			final TextRenderer textRenderer = this.parent.getTextRenderer();
 			int y = this.getY() - textRenderer.fontHeight - 6;
 			
-			ctx.fillGradient(this.getX(), y, this.getRight(), y + textRenderer.fontHeight + 4, 0xAA000000, 0x77000000);
+			ctx.fillGradient(this.getX(), y, this.getRight(), y + textRenderer.fontHeight + 4, 0x77000000, 0x77000000);
 			TimeChangerScreen.renderText(ctx, textRenderer, this.title, this.getX(), y + 1, this.width, true, -1);
 		}
 		

@@ -230,7 +230,7 @@ public class StaticTime implements DayNightCycleBasis
 		}
 		
 		public long getTime() {
-			return this.time;
+			return this.time + 5904000L;
 		}
 		public boolean shouldShowInCommand() {
 			return this.showInCommand;

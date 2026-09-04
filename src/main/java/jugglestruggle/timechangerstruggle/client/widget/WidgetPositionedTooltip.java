@@ -1,59 +1,56 @@
 package jugglestruggle.timechangerstruggle.client.widget;
 
+import com.google.common.collect.ImmutableList;
 import jugglestruggle.timechangerstruggle.client.screen.TimeChangerScreen;
-
-import java.util.List;
-
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
 
-import com.google.common.collect.ImmutableList;
+import java.util.List;
 
 /**
  * @author JuggleStruggle
  * @implNote Created on 06-Feb-2022, Sunday
  */
-public interface WidgetPositionedTooltip extends WidgetOrderedTooltip
-{
-	int getTooltipWidth();
-	int getTooltipHeight();
-	
-	void setTooltipWidth(int width);
-	void setTooltipHeight(int height);
-	
-	@Override
-	void setOrderedTooltip(List<OrderedText> textToSet);
-	
-	default void updateTooltip(Text tooltipDescText, Text tooltipText, TextRenderer renderer)
-	{
-		final boolean descIsNull = tooltipDescText == null;
-		final boolean tooltipIsNull = tooltipText == null;
-		
-		List<OrderedText> compiledTooltipText;
-		
-		if (descIsNull && tooltipIsNull) {
-			compiledTooltipText = ImmutableList.of();
-		} 
-		else
-		{
-			byte useCase;
-			
-			if (descIsNull)
-				useCase = 1;
-			else if (tooltipIsNull)
-				useCase = 3;
-			else
-				useCase = 2;
-			
-			compiledTooltipText = TimeChangerScreen.createOrderedTooltips(
-				renderer, useCase, tooltipDescText, tooltipText
-			);
-		}
-		
-		final int[] offsetPos = TimeChangerScreen.getTooltipsSize(compiledTooltipText, renderer);
-		this.setTooltipWidth(offsetPos[0]); this.setTooltipHeight(offsetPos[1]); 
-		
-		this.setOrderedTooltip(compiledTooltipText);
-	}
+public interface WidgetPositionedTooltip extends WidgetOrderedTooltip {
+    int getTooltipWidth();
+
+    int getTooltipHeight();
+
+    void setTooltipWidth(int width);
+
+    void setTooltipHeight(int height);
+
+    @Override
+    void setOrderedTooltip(List<OrderedText> textToSet);
+
+    default void updateTooltip(Text tooltipDescText, Text tooltipText, TextRenderer renderer) {
+        final boolean descIsNull = tooltipDescText == null;
+        final boolean tooltipIsNull = tooltipText == null;
+
+        List<OrderedText> compiledTooltipText;
+
+        if (descIsNull && tooltipIsNull) {
+            compiledTooltipText = ImmutableList.of();
+        } else {
+            byte useCase;
+
+            if (descIsNull)
+                useCase = 1;
+            else if (tooltipIsNull)
+                useCase = 3;
+            else
+                useCase = 2;
+
+            compiledTooltipText = TimeChangerScreen.createOrderedTooltips(
+                    renderer, useCase, tooltipDescText, tooltipText
+            );
+        }
+
+        final int[] offsetPos = TimeChangerScreen.getTooltipsSize(compiledTooltipText, renderer);
+        this.setTooltipWidth(offsetPos[0]);
+        this.setTooltipHeight(offsetPos[1]);
+
+        this.setOrderedTooltip(compiledTooltipText);
+    }
 }

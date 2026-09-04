@@ -10,11 +10,10 @@ import org.spongepowered.asm.mixin.gen.Invoker;
  * @implNote Introduced in v0.0.2
  */
 @Mixin(CyclingButtonWidget.class)
-public interface CyclingButtonWidgetAccessor<T>
-{
-	@Invoker(value = "getValue")
-	T dcs_getValue(int offset);
-	
-	@Invoker(value = "composeText")
-	Text dcs_composeText(T value); 
+public interface CyclingButtonWidgetAccessor<T> {
+    @Invoker(value = "getValue")
+    T dcs_getValue(int offset);
+
+    @Invoker(value = "composeText")
+    Text dcs_composeText(T value);
 }

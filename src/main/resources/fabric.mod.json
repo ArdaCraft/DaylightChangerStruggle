@@ -1,44 +1,48 @@
 {
-	"schemaVersion": 1,
-	"id": "daylightchangerstruggle",
-	"version": "${version}",
-	"environment": "client",
-	
-	"name": "DaylightChangerStruggle",
-	"description": "Allows you to change the client's world time in a variety of ways! Forked and adapted for Ardacraft.",
-	"icon": "assets/timechangerstruggle/icon.png",
-	"authors": ["JuggleStruggle"],
-    "contributors": ["AjCool", "Acen"],
-	
-	"license": "LGPL-3.0-only",
-
-	"depends": {
-		"fabricloader": ">=0.18.1",
-		"minecraft": ">=26.1",
-		"java": ">=25",
-		"fabric-api": "*"
-	},
-
-	"entrypoints": {
-		"main": ["jugglestruggle.timechangerstruggle.TimeChangerStruggle"],
-		"client": ["jugglestruggle.timechangerstruggle.client.TimeChangerStruggleClient"]
-	},
-	
-	"mixins": ["timechangerstruggle.client.mixins.json"],
-	"accessWidener": "timechangerstruggle.client.accesswidener",
-
-	"contact": {
-		"homepage": "https://github.com/ArdaCraft/DaylightChangerStruggle",
-		"sources": "https://github.com/ArdaCraft/DaylightChangerStruggle",
-		"issues": "https://github.com/ArdaCraft/DaylightChangerStruggle"
-	},
-
-	"custom": {
-		"modmenu": {
-			"links": {
-				"modmenu.modrinth": "https://modrinth.com/mod/daylightchangerstruggle",
-				"modmenu.curseforge": "https://curseforge.com/minecraft/mc-mods/daylightchangerstruggle"
-			}
-		}
-	}
+  "schemaVersion": 1,
+  "id": "ac-daylightchangerstruggle",
+  "version": "${version}",
+  "environment": "client",
+  "name": "AC-DaylightChangerStruggle",
+  "description": "Allows you to change the client's world time in a variety of ways! Forked and adapted for Ardacraft.",
+  "icon": "assets/timechangerstruggle/icon.png",
+  "authors": [
+    "JuggleStruggle"
+  ],
+  "contributors": [
+    "AjCool",
+    "Acen"
+  ],
+  "license": "LGPL-3.0-only",
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": ">=26.1",
+    "java": ">=25",
+    "fabric-api": "*"
+  },
+  "entrypoints": {
+    "main": [
+      "jugglestruggle.timechangerstruggle.TimeChangerStruggle"
+    ],
+    "client": [
+      "jugglestruggle.timechangerstruggle.client.TimeChangerStruggleClient"
+    ]
+  },
+  "mixins": [
+    "timechangerstruggle.client.mixins.json"
+  ],
+  "accessWidener": "timechangerstruggle.client.accesswidener",
+  "contact": {
+    "homepage": "https://github.com/ArdaCraft/DaylightChangerStruggle",
+    "sources": "https://github.com/ArdaCraft/DaylightChangerStruggle",
+    "issues": "https://github.com/ArdaCraft/DaylightChangerStruggle"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.modrinth": "https://modrinth.com/mod/daylightchangerstruggle",
+        "modmenu.curseforge": "https://curseforge.com/minecraft/mc-mods/daylightchangerstruggle"
+      }
+    }
+  }
 }

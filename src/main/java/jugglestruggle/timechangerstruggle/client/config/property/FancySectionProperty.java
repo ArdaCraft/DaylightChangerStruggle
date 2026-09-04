@@ -1,16 +1,13 @@
 package jugglestruggle.timechangerstruggle.client.config.property;
 
-import jugglestruggle.timechangerstruggle.client.config.widget.WidgetConfigInterface;
-import jugglestruggle.timechangerstruggle.client.screen.TimeChangerScreen;
-import jugglestruggle.timechangerstruggle.config.property.BaseProperty;
-
-import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-
-import net.minecraft.text.Text;
-
 import com.google.gson.JsonElement;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
+import jugglestruggle.timechangerstruggle.client.config.widget.WidgetConfigInterface;
+import jugglestruggle.timechangerstruggle.client.screen.TimeChangerScreen;
+import jugglestruggle.timechangerstruggle.config.property.BaseProperty;
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
+import net.minecraft.text.Text;
 
 /**
  * A section that cannot and should not be used to save as
@@ -23,57 +20,56 @@ import com.mojang.brigadier.context.CommandContext;
  * @author JuggleStruggle
  * @implNote Created on 01-Feb-2022, Tuesday
  */
-public class FancySectionProperty extends BaseProperty<FancySectionProperty, Text>
-{
-	public static final FancySectionProperty EMPTY = new FancySectionProperty("", null);
-	
-	public FancySectionProperty(String property, Text value) {
-		super(property, value);
-	}
+public class FancySectionProperty extends BaseProperty<FancySectionProperty, Text> {
+    public static final FancySectionProperty EMPTY = new FancySectionProperty("", null);
 
-	@Override
-	public void set(Text value) {}
+    public FancySectionProperty(String property, Text value) {
+        super(property, value);
+    }
 
-	@Override
-	public WidgetConfigInterface<FancySectionProperty, Text> createConfigElement
-	(TimeChangerScreen screen, FancySectionProperty owningSection)
-	{
-		return null;
-	}
+    @Override
+    public void set(Text value) {
+    }
 
-	@Override
-	public void readFromJson(JsonElement elem) {}
+    @Override
+    public WidgetConfigInterface<FancySectionProperty, Text> createConfigElement
+            (TimeChangerScreen screen, FancySectionProperty owningSection) {
+        return null;
+    }
 
-	@Override
-	public JsonElement writeToJson() {
-		return null;
-	}
+    @Override
+    public void readFromJson(JsonElement elem) {
+    }
 
-	@Override
-	public ArgumentType<Text> onCommandOptionGetArgType() {
-		return null;
-	}
+    @Override
+    public JsonElement writeToJson() {
+        return null;
+    }
 
-	@Override
-	public int onCommandOptionWithValueExecute(CommandContext<FabricClientCommandSource> ctx) {
-		return 0;
-	}
+    @Override
+    public ArgumentType<Text> onCommandOptionGetArgType() {
+        return null;
+    }
 
-	/**
-	 * Gets whether this property shall be created under this section. 
-	 * 
-	 * <p> This is useful if certain properties need to be hidden from the user if 
-	 * the property is meant to be "remembered" such as Moving Time or Randomized 
-	 * Time. However, please do not forget that they can still be edited in the
-	 * configuration file and ensure to verify/parse things (or not) where applicable.
-	 * 
-	 * @param sectionPropIndex the index representing the child props of this section
-	 * @param prop the "child" property that's part of this section
-	 * @return a boolean value; by default this returns {@code true} to allow all of them
-	 * 
-	 * @implNote Introduced in v0.0.1
-	 */
-	public boolean shouldCreatePropertyConfigElem(int sectionPropIndex, BaseProperty<?, ?> prop) {
-		return true;
-	}
+    @Override
+    public int onCommandOptionWithValueExecute(CommandContext<FabricClientCommandSource> ctx) {
+        return 0;
+    }
+
+    /**
+     * Gets whether this property shall be created under this section.
+     *
+     * <p> This is useful if certain properties need to be hidden from the user if
+     * the property is meant to be "remembered" such as Moving Time or Randomized
+     * Time. However, please do not forget that they can still be edited in the
+     * configuration file and ensure to verify/parse things (or not) where applicable.
+     *
+     * @param sectionPropIndex the index representing the child props of this section
+     * @param prop             the "child" property that's part of this section
+     * @return a boolean value; by default this returns {@code true} to allow all of them
+     * @implNote Introduced in v0.0.1
+     */
+    public boolean shouldCreatePropertyConfigElem(int sectionPropIndex, BaseProperty<?, ?> prop) {
+        return true;
+    }
 }

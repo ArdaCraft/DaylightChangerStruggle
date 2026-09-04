@@ -14,13 +14,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @implNote Introduced in v0.0.1
  */
 @Mixin(MinecraftClient.class)
-public class MinecraftClientMixin
-{
-	// A semi-copy of Fabric's MinecraftClient's mixin due to that one requiring that
-	// the world parameter not be null. This variant requires that to be in order to
-	// be able to save certain cycles to disk and identify changes as it goes.
-	@Inject(method = "setWorld(Lnet/minecraft/client/world/ClientWorld;Z)V", at = @At("TAIL"))
-	private void daylightChangerStruggle_onAfterClientWorldChange(ClientWorld world, boolean stopSoundManager, CallbackInfo ci) {
-		TimeChangerStruggleClient.onWorldChanged((MinecraftClient)(Object)this, world);
-	}
+public class MinecraftClientMixin {
+    // A semi-copy of Fabric's MinecraftClient's mixin due to that one requiring that
+    // the world parameter not be null. This variant requires that to be in order to
+    // be able to save certain cycles to disk and identify changes as it goes.
+    @Inject(method = "setWorld(Lnet/minecraft/client/world/ClientWorld;Z)V", at = @At("TAIL"))
+    private void daylightChangerStruggle_onAfterClientWorldChange(ClientWorld world, boolean stopSoundManager, CallbackInfo ci) {
+        TimeChangerStruggleClient.onWorldChanged((MinecraftClient) (Object) this, world);
+    }
 }

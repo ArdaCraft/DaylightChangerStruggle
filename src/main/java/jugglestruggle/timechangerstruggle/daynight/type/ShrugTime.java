@@ -12,43 +12,42 @@ import net.minecraft.text.Text;
  * @author JuggleStruggle
  * @implNote Created on 17-Feb-2022, Thursday
  */
-public class ShrugTime implements DayNightCycleBasis
-{
-	@Override
-	public long getModifiedTime(ClientWorld world, DayNightGetterType executor, boolean previous) {
-		return 0;
-	}
+public class ShrugTime implements DayNightCycleBasis {
+    @Override
+    public long getModifiedTime(ClientWorld world, DayNightGetterType executor, boolean previous) {
+        return 0;
+    }
 
-	@Override
-	public long getCachedTime() {
-		return 0;
-	}
+    @Override
+    public long getCachedTime() {
+        return 0;
+    }
 
-	@Override
-	public Class<?> getBuilderClass() {
-		return Builder.class;
-	}
+    @Override
+    public Class<?> getBuilderClass() {
+        return Builder.class;
+    }
 
 
-	public static class Builder implements DayNightCycleBuilder
-	{
-		@Override
-		public DayNightCycleBasis create() {
-			return new ShrugTime();
-		}
+    public static class Builder implements DayNightCycleBuilder {
+        @Override
+        public DayNightCycleBasis create() {
+            return new ShrugTime();
+        }
 
-		@Override
-		public String getKeyName() {
-			return "shrugtime";
-		}
-		
-		@Override
-		public Text getTranslatableName() {
-			return Text.of("¯\\_(ツ)_/¯");
-		}
-		@Override
-		public Text getTranslatableDescription() {
-			return Text.translatable("jugglestruggle.tcs.dnt.shrugtime.description");
-		}
-	}
+        @Override
+        public String getKeyName() {
+            return "shrugtime";
+        }
+
+        @Override
+        public Text getTranslatableName() {
+            return Text.of("¯\\_(ツ)_/¯");
+        }
+
+        @Override
+        public Text getTranslatableDescription() {
+            return Text.translatable("jugglestruggle.tcs.dnt.shrugtime.description");
+        }
+    }
 }

@@ -4,136 +4,134 @@ import jugglestruggle.timechangerstruggle.client.widget.WidgetPositionedTooltip;
 import jugglestruggle.timechangerstruggle.config.property.BaseProperty.ValueConsumer;
 import jugglestruggle.timechangerstruggle.config.property.StringValue;
 import jugglestruggle.timechangerstruggle.daynight.DayNightCycleBasis.PropertyWriterSource;
-
-import java.util.List;
-import java.util.function.Consumer;
-
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
 
+import java.util.List;
+import java.util.function.Consumer;
+
 /**
  * @author JuggleStruggle
  * @implNote Created on 30-Jan-2022, Sunday
  */
-public class TextFieldWidgetConfig extends TextFieldWidget 
-implements WidgetConfigInterface<StringValue, String>, WidgetPositionedTooltip
-{
-	String initialText;
-	final StringValue property;
-	protected boolean allowEmptyText;
+public class TextFieldWidgetConfig extends TextFieldWidget
+        implements WidgetConfigInterface<StringValue, String>, WidgetPositionedTooltip {
+    String initialText;
+    final StringValue property;
+    protected boolean allowEmptyText;
 
-	private int tooltipWidth;
-	private int tooltipHeight;
-	private List<OrderedText> compiledTooltipText;
-	private Consumer<String> textChangedListener;
-	
-	public TextFieldWidgetConfig(TextRenderer textRenderer, int width, int height, 
-		StringValue property, boolean allowEmptyText) 
-	{
-		super(textRenderer, 0, 0, width, height, Text.empty());
-		
-		this.property = property;
-		this.allowEmptyText = allowEmptyText;
-		this.initialText = property.get();
-		
-		this.setText(this.initialText);
-		this.setChangedListener(null);
-		
-		this.setCursorToStart(false);
-	}
+    private int tooltipWidth;
+    private int tooltipHeight;
+    private List<OrderedText> compiledTooltipText;
+    private Consumer<String> textChangedListener;
 
-	@Override
-	public boolean isValid() {
-		return this.allowEmptyText ? true : !this.getText().isBlank();
-	}
-	
-	@Override
-	public StringValue getProperty() {
-		return this.property;
-	}
-	@Override
-	public String getInitialValue() {
-		return this.initialText;
-	}
-	@Override
-	public void setInitialValue(String value) {
-		this.initialText = value;
-	}
-	@Override
-	public boolean isDefaultValue() {
-		return this.property.getDefaultValue().equals(this.property.get());
-	}
-	@Override
-	public void forceSetWidgetValueToDefault(boolean justInitial)
-	{
-		if (justInitial) {
-			super.setText((this.initialText == null) ? "" : this.initialText);
-		} 
-		else 
-		{
-			String def = this.property.getDefaultValue();
-			super.setText((def == null) ? "" : def);
-		}
-	}
-	@Override
-	public void setPropertyValueToDefault(boolean justInitial)
-	{
-		if (justInitial) {
-			this.property.set((this.initialText == null) ? "" : this.initialText);
-		} 
-		else 
-		{
-			String def = this.property.getDefaultValue();
-			this.property.set((def == null) ? "" : def);
-		}
-	}
+    public TextFieldWidgetConfig(TextRenderer textRenderer, int width, int height,
+                                 StringValue property, boolean allowEmptyText) {
+        super(textRenderer, 0, 0, width, height, Text.empty());
 
-	@Override
-	public void setChangedListener(Consumer<String> changedListener)
-	{
-		this.textChangedListener = changedListener;
-		super.setChangedListener(this::onTextChanged);
-	}
-	private void onTextChanged(String newText)
-	{
-		ValueConsumer<StringValue, String> consumer = this.property.getConsumer();
-		
-		if (consumer != null)
-			consumer.consume(this.property, newText, PropertyWriterSource.USER);
-		
-		this.property.set(newText);
-		
-		if (this.textChangedListener != null)
-			this.textChangedListener.accept(newText);
-	}
-	
-	
-	
-	@Override
-	public int getTooltipWidth() {
-		return this.tooltipWidth;
-	}
-	@Override
-	public int getTooltipHeight() {
-		return this.tooltipHeight;
-	}
-	@Override
-	public void setTooltipWidth(int width) {
-		this.tooltipWidth = width;
-	}
-	@Override
-	public void setTooltipHeight(int height) {
-		this.tooltipHeight = height;
-	}
-	
-	@Override
-	public List<OrderedText> getOrderedTooltip() {
-		return this.compiledTooltipText;
-	}
-	@Override
-	public void setOrderedTooltip(List<OrderedText> textToSet) {
-		this.compiledTooltipText = textToSet;
-	}
+        this.property = property;
+        this.allowEmptyText = allowEmptyText;
+        this.initialText = property.get();
+
+        this.setText(this.initialText);
+        this.setChangedListener(null);
+
+        this.setCursorToStart(false);
+    }
+
+    @Override
+    public boolean isValid() {
+        return this.allowEmptyText ? true : !this.getText().isBlank();
+    }
+
+    @Override
+    public StringValue getProperty() {
+        return this.property;
+    }
+
+    @Override
+    public String getInitialValue() {
+        return this.initialText;
+    }
+
+    @Override
+    public void setInitialValue(String value) {
+        this.initialText = value;
+    }
+
+    @Override
+    public boolean isDefaultValue() {
+        return this.property.getDefaultValue().equals(this.property.get());
+    }
+
+    @Override
+    public void forceSetWidgetValueToDefault(boolean justInitial) {
+        if (justInitial) {
+            super.setText((this.initialText == null) ? "" : this.initialText);
+        } else {
+            String def = this.property.getDefaultValue();
+            super.setText((def == null) ? "" : def);
+        }
+    }
+
+    @Override
+    public void setPropertyValueToDefault(boolean justInitial) {
+        if (justInitial) {
+            this.property.set((this.initialText == null) ? "" : this.initialText);
+        } else {
+            String def = this.property.getDefaultValue();
+            this.property.set((def == null) ? "" : def);
+        }
+    }
+
+    @Override
+    public void setChangedListener(Consumer<String> changedListener) {
+        this.textChangedListener = changedListener;
+        super.setChangedListener(this::onTextChanged);
+    }
+
+    private void onTextChanged(String newText) {
+        ValueConsumer<StringValue, String> consumer = this.property.getConsumer();
+
+        if (consumer != null)
+            consumer.consume(this.property, newText, PropertyWriterSource.USER);
+
+        this.property.set(newText);
+
+        if (this.textChangedListener != null)
+            this.textChangedListener.accept(newText);
+    }
+
+
+    @Override
+    public int getTooltipWidth() {
+        return this.tooltipWidth;
+    }
+
+    @Override
+    public int getTooltipHeight() {
+        return this.tooltipHeight;
+    }
+
+    @Override
+    public void setTooltipWidth(int width) {
+        this.tooltipWidth = width;
+    }
+
+    @Override
+    public void setTooltipHeight(int height) {
+        this.tooltipHeight = height;
+    }
+
+    @Override
+    public List<OrderedText> getOrderedTooltip() {
+        return this.compiledTooltipText;
+    }
+
+    @Override
+    public void setOrderedTooltip(List<OrderedText> textToSet) {
+        this.compiledTooltipText = textToSet;
+    }
 }
